@@ -1,0 +1,141 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+.navbar {
+   display: flex;
+   justify-content: space-between;
+   margin: 25px 100px;
+}
+
+.logo {
+   font-weight: lighter;
+   font-size: 30px;
+   cursor: pointer;
+}
+
+.nav-items {
+   display: flex;
+   list-style-type: none;
+   gap: 30px;
+}
+
+.nav-items li {
+   font-weight: lighter;
+   font-size: 20px;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+   cursor: pointer;
+}
+
+.create-button {
+   color: white;
+   background-color: black;
+   padding: 7px 17px;
+   font-size: 17px;
+   border-radius: 10px;
+   cursor: pointer;
+   transition: all 0.5s;
+   border: none;
+}
+
+.create-button:hover {
+  background-color: gray;
+}
+
+.article-container {
+   margin: 10px 70px 100px;
+}
+
+.article-container-heading {
+   font-weight: lighter;
+   font-size: 25px;
+   margin: 50px 0px 20px 135px;
+}
+
+.blog-card-container {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 30px;
+}
+
+.blog-card {
+   width: 350px;
+   cursor: pointer;
+}
+
+.blog-image {
+   width: 350px;
+   height: 200px;
+   border-radius: 10px;
+}
+
+.blog-title {
+   font-size: 20px;
+   margin: 5px 0 10px;
+}
+
+.blog-description {
+   margin: 0 0 5px;
+}
+
+.blog-details {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 70px auto 100px;
+   width: 800px;
+}
+
+.details-category {
+   border: 1px solid gray;
+   border-radius: 30px;
+   padding: 5px 15px;
+}
+
+.details-image {
+   width: 300px;
+   border-radius: 10px;
+}
+
+.details-title {
+   font-size: 30px;
+   font-weight: lighter;
+}
+
+.details-description {
+   margin-bottom: 10px;
+}
+
+.details-content {
+   font-size: 20px;
+   width: 800px;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+}
+
+[contenteditable] {
+   outline: 0px solid transparent;
+}
+
+p:empty::before {
+   content: attr(data-placeholder);
+   color: gray;
+}
+
+.publish-button {
+   color: white;
+   background-color: gray;
+   padding: 10px 20px;
+   border-radius: 30px;
+   border: none;
+   transition: all 0.5s;
+}
+
+.publish-button:hover {
+   background-color: black;
+}
