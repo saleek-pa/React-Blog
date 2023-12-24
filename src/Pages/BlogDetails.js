@@ -30,7 +30,7 @@ const BlogDetails = () => {
                   <img src={details.photo_url} alt={details.title} className="details-image" />
                   <div style={{ display: "flex", flexDirection: "column", gap: "0px" }}>
                      <h3 className="details-title">{details.title}</h3>
-                     <h3 className="details-description">{details.description}</h3>
+                     <p className="details-description">{details.description}</p>
                      <p className="details-author">Lana Steiner &#8226; {dateConvert(details.created_at)}</p>
                   </div>
                </div>
