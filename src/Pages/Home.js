@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BlogContext } from "../App";
 import Navbar from "../Components/Navbar";
 
 const Home = () => {
-   const [blogs, setBlogs] = useState([]);
+   const { blog, setBlog, dateConvert } = useContext(BlogContext);
    const [authors, setAuthors] = useState({});
    const navigate = useNavigate();
 
@@ -11,10 +12,10 @@ const Home = () => {
       const fetchBlogPost = () => {
          fetch("https://api.slingacademy.com/v1/sample-data/blog-posts?limit=30")
             .then((response) => response.json())
-            .then((data) => setBlogs(data.blogs));
+            .then((data) => setBlog([data.blogs]));
       };
       fetchBlogPost();
-   }, []);
+   }, [setBlog]);
 
    useEffect(() => {
       const fetchAuthor = (authorId) => {
@@ -23,18 +24,10 @@ const Home = () => {
             .then((data) => setAuthors((prevAuthors) => ({ ...prevAuthors, [authorId]: data.user })));
       };
 
-      blogs.forEach((blog) => {
+      blog.forEach((blog) => {
          fetchAuthor(blog.user_id);
       });
-   }, [blogs]);
-
-   console.log(authors);
-
-   const dateConvert = (timestamp) => {
-      if (!timestamp) return "Invalid Date";
-      const date = new Date(timestamp);
-      return date.toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" });
-   };
+   }, [blog]);
 
    return (
       <>
@@ -43,7 +36,7 @@ const Home = () => {
          <article className="article-container">
             <h2 className="article-container-heading">Blog Posts</h2>
             <section className="blog-card-container">
-               {blogs.map((blog) => (
+               {blog.map((blog) => (
                   <div className="blog-card" key={blog.id} onClick={() => navigate(`/blogs/${blog.id}`)}>
                      <img src={blog.photo_url} alt={blog.title} className="blog-image" />
                      <h3 className="blog-title">{blog.title}</h3>

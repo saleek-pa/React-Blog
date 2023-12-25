@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { BlogContext } from "../App";
 import Navbar from "../Components/Navbar";
 
 const BlogCreate = () => {
-   const [details, setDetails] = useState({
-      id: Date.now,
+   const { dateConvert } = useContext(BlogContext);
+   const [content, setContent] = useState({
+      id: Date.now(),
       title: "",
       description: "",
       author: "",
@@ -13,8 +15,10 @@ const BlogCreate = () => {
          "https://www.realsimple.com/thmb/RoewhWQEjNDAohqlbZkzGaQTs0o=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/pantone-color-of-the-year-2023-ab984d87577a46e3a300649442aa36c2.jpeg",
    });
 
+   console.log(content)
+
    const handleInputChange = (field, value) => {
-      setDetails((prevDetails) => ({
+      setContent((prevDetails) => ({
          ...prevDetails,
          [field]: value,
       }));
@@ -24,12 +28,6 @@ const BlogCreate = () => {
       handleInputChange(field, event.target.innerText);
    };
 
-   const dateConvert = (timestamp) => {
-      const date = new Date(timestamp);
-      return date.toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" });
-   };
-
-   console.log(details);
    return (
       <>
          <Navbar />
@@ -72,7 +70,7 @@ const BlogCreate = () => {
                onInput={(e) => handleContentEditableChange("content", e)}
             ></p>
          </section>
-         <div style={{display: "flex", justifyContent: "center"}}>
+         <div style={{ display: "flex", justifyContent: "center" }}>
             <button className="publish-button">Publish</button>
          </div>
       </>
