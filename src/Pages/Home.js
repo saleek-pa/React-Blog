@@ -12,7 +12,7 @@ const Home = () => {
       const fetchBlogPost = () => {
          fetch("https://api.slingacademy.com/v1/sample-data/blog-posts?limit=30")
             .then((response) => response.json())
-            .then((data) => setBlog([data.blogs]));
+            .then((data) => setBlog(data.blogs));
       };
       fetchBlogPost();
    }, [setBlog]);
